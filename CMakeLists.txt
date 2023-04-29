@@ -714,13 +714,17 @@ install(
   DESTINATION
     "."
 )
-install(
-  FILES  
-    "${FREETYPE_COPY_FILES}"
-    "${SDL2_COPY_FILES}"
-  DEFINITION
-    "."
-)
+
+if(TARGET_OS STREQUAL "windows")
+  install(
+    FILES  
+      "${FREETYPE_COPY_FILES}"
+      "${SDL2_COPY_FILES}"
+    DEFINITION
+      "."
+  )
+endif()
+
 install(
   FILES
     "storage.cfg"
