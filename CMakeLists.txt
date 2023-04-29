@@ -720,8 +720,8 @@ if(TARGET_OS STREQUAL "windows")
 
   install(
     FILES  
-      "${FREETYPE_COPY_FILES}"
-      "${SDL2_COPY_FILES}"
+      "${PROJECT_BINARY_DIR}/${FREETYPE_COPY_FILES}"
+      "${PROJECT_BINARY_DIR}/${SDL2_COPY_FILES}"
     DEFINITION
       "."
   )
