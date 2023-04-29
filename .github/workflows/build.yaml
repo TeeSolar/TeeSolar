@@ -42,7 +42,6 @@ jobs:
         brew install pkg-config sdl2
 
     - name: Build in release mode
-      env: ${{ matrix.env }}
       run: |
         mkdir release
         cd release
