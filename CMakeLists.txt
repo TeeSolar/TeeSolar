@@ -709,7 +709,8 @@ install(
 )
 install(
   TARGETS
-    "license.txt"
+    "license-teeworlds.txt"
+    "LICENSE"
   DESTINATION
     "."
 )
