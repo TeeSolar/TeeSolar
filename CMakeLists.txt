@@ -737,8 +737,6 @@ set(CPACK_GENERATOR TXZ)
 
 if(TARGET_OS STREQUAL "windows")
   set(CPACK_GENERATOR ZIP)
-elseif(TARGET_OS STREQUAL "mac")
-  set(CPACK_GENERATOR DMG)
 endif()
 include(CPack)
 

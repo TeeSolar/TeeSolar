@@ -7,19 +7,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest]
         include:
         - os: ubuntu-latest
           cmake-args: -G "Unix Makefiles"
           build-args: --parallel
           package-file: teesolar-*-Linux.tar.xz
-          env:
-            CFLAGS: -Wdeclaration-after-statement -Werror
-            CXXFLAGS: -Werror
-        - os: macOS-latest
-          cmake-args: -G "Unix Makefiles"
-          build-args: --parallel
-          package-file: teesolar-*-osx.dmg
           env:
             CFLAGS: -Wdeclaration-after-statement -Werror
             CXXFLAGS: -Werror
@@ -41,12 +34,6 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install pkg-config cmake libfreetype6-dev libsdl2-dev -y
-
-    - name: Prepare MacOS
-      if: contains(matrix.os, 'macOS')
-      run: |
-        brew update
-        brew install pkg-config sdl2
 
     - name: Build in release mode
       run: |
