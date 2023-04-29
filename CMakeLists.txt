@@ -93,7 +93,7 @@ set(CLIENT_EXECUTABLE TeeSolar CACHE STRING "Name of the build client executable
 
 find_package(PythonInterp)
 if(DOWNLOAD_DEPENDENCIES)
-  if(PYTHON_EXECUTABLE AND TARGET_OS STREQUAL "windows" AND TARGET_BITS)
+  if(PYTHON_EXECUTABLE AND TARGET_OS STREQUAL "windows")
     set(DOWNLOADS)
     foreach(d freetype sdl)
       if(NOT EXISTS "${PROJECT_SOURCE_DIR}/other/${d}/${TARGET_OS}/lib${TARGET_BITS}")
