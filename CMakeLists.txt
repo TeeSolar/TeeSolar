@@ -716,18 +716,12 @@ install(
 
 if(TARGET_OS STREQUAL "windows")
 
-  set(LIBRARY_COPY_FILES
-    ${FREETYPE_COPY_FILES}
-    ${SDL2_COPY_FILES}
-  )
-
-  file(COPY ${LIBRARY_COPY_FILES} DESTINATION .)
-
-  message(STATUS "Library files found: ${LIBRARY_COPY_FILES}")
+  message(STATUS "Library files found: ${FREETYPE_COPY_FILES} ${SDL2_COPY_FILES}")
 
   install(
     FILES  
-      "${LIBRARY_COPY_FILES}"
+      "${FREETYPE_COPY_FILES}"
+      "${SDL2_COPY_FILES}"
     DEFINITION
       "."
   )
