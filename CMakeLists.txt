@@ -648,6 +648,8 @@ endif()
 list(APPEND TARGETS_OWN ${TARGET_CLIENT})
 list(APPEND TARGETS_LINK ${TARGET_CLIENT})
 
+add_custom_target(everything DEPENDS ${TARGETS_OWN})
+
 ########################################################################
 # TESTS
 ########################################################################
