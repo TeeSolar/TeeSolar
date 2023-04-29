@@ -173,7 +173,6 @@ void CClient::SetState(int s)
 	if(m_State == IClient::STATE_QUITING)
 		return;
 
-	int Old = m_State;
 	if(Config()->m_Debug)
 	{
 		char aBuf[128];
@@ -219,7 +218,6 @@ void CClient::DebugRender()
 	static float FrameTimeAvg = 0;
 	static IGraphics::CTextureHandle s_Font = Graphics()->LoadTexture("ui/debug_font.png", IStorage::TYPE_ALL, CImageInfo::FORMAT_AUTO, IGraphics::TEXLOAD_NORESAMPLE);
 	char aBuffer[256];
-	int64 Now = time_get();
 
 	//m_pGraphics->BlendNormal();
 	Graphics()->TextureSet(s_Font);
@@ -742,9 +740,9 @@ void CClient::RegisterCommands()
 {
 	m_pConsole = Kernel()->RequestInterface<IConsole>();
 
-	m_pConsole->Register("quit", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Quit, this, "Quit Teeworlds");
-	m_pConsole->Register("exit", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Quit, this, "Quit Teeworlds");
-	m_pConsole->Register("minimize", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Minimize, this, "Minimize Teeworlds");
+	m_pConsole->Register("quit", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Quit, this, "Quit TeeSolar");
+	m_pConsole->Register("exit", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Quit, this, "Quit TeeSolar");
+	m_pConsole->Register("minimize", "", CFGFLAG_CLIENT|CFGFLAG_STORE, Con_Minimize, this, "Minimize TeeSolar");
 	m_pConsole->Register("screenshot", "", CFGFLAG_CLIENT, Con_Screenshot, this, "Take a screenshot");
 
 	m_pConsole->Chain("gfx_screen", ConchainWindowScreen, this);
@@ -762,7 +760,6 @@ static CClient *CreateClient()
 
 void CClient::DoVersionSpecificActions()
 {
-	Config()->m_ClLastVersionPlayed = CLIENT_VERSION;
 }
 
 /*
@@ -813,9 +810,9 @@ int main(int argc, const char **argv) // ignore_convention
 
 	// create the components
 	int FlagMask = CFGFLAG_CLIENT;
-	IEngine *pEngine = CreateEngine("Teeworlds");
+	IEngine *pEngine = CreateEngine("TeeSolar");
 	IConsole *pConsole = CreateConsole(FlagMask);
-	IStorage *pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_CLIENT, argc, argv); // ignore_convention
+	IStorage *pStorage = CreateStorage("TeeSolar", IStorage::STORAGETYPE_CLIENT, argc, argv); // ignore_convention
 	IConfigManager *pConfigManager = CreateConfigManager();
 	IEngineSound *pEngineSound = CreateEngineSound();
 	IEngineInput *pEngineInput = CreateEngineInput();
@@ -872,20 +869,6 @@ int main(int argc, const char **argv) // ignore_convention
 
 		// execute autoexec file
 		pConsole->ExecuteFile("autoexec.cfg");
-
-		// parse the command line arguments
-		if(argc > 1) // ignore_convention
-		{
-			const char *pAddress = 0;
-			if(argc == 2)
-			{
-				pAddress = str_startswith(argv[1], "teesolar:");
-			}
-			else
-			{
-				pConsole->ParseArguments(argc - 1, &argv[1]);
-			}
-		}
 	}
 #if defined(CONF_FAMILY_WINDOWS)
 	CConfig *pConfig = pConfigManager->Values();

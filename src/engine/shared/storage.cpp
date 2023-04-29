@@ -64,9 +64,9 @@ public:
 			{
 				char aPath[IO_MAX_PATH_LENGTH];
 				
-				fs_makedir(GetPath(TYPE_SAVE, "autorules", aPath, sizeof(aPath)));
 				fs_makedir(GetPath(TYPE_SAVE, "maps", aPath, sizeof(aPath)));
 				fs_makedir(GetPath(TYPE_SAVE, "packages", aPath, sizeof(aPath)));
+				fs_makedir(GetPath(TYPE_SAVE, "configs", aPath, sizeof(aPath)));
 			}
 			else
 			{

@@ -10,6 +10,7 @@ enum
 	LAYERTYPE_GAME,
 	LAYERTYPE_TILES,
 	LAYERTYPE_QUADS,
+	LAYERTYPE_ENTITES,
 
 	MAPITEMTYPE_VERSION=0,
 	MAPITEMTYPE_INFO,
@@ -80,6 +81,12 @@ struct CQuad
 
 	int m_ColorEnv;
 	int m_ColorEnvOffset;
+};
+
+struct CEntity
+{
+	CPoint m_Point;
+	int m_aName[3];
 };
 
 struct CTile

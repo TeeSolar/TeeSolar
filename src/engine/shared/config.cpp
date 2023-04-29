@@ -90,7 +90,7 @@ void CConfigManager::Save(const char *pFilename)
 	if(!m_ConfigFile)
 		return;
 
-	WriteLine("# Teeworlds " GAME_VERSION);
+	WriteLine("# TeeSolar " EDITOR_VERSION);
 
 	char aLineBuf[1024*2];
 	char aEscapeBuf[1024*2];
