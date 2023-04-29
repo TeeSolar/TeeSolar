@@ -650,15 +650,6 @@ list(APPEND TARGETS_LINK ${TARGET_CLIENT})
 add_custom_target(everything DEPENDS ${TARGETS_OWN})
 
 ########################################################################
-# COPY DATA AND DLLS
-########################################################################
-
-set(COPY_FILES
-  ${FREETYPE_COPY_FILES}
-  ${SDL2_COPY_FILES}
-)
-
-########################################################################
 # TESTS
 ########################################################################
 
@@ -725,7 +716,8 @@ install(
 )
 install(
   FILES  
-    ${COPY_FILES}
+    "${FREETYPE_COPY_FILES}"
+    "${SDL2_COPY_FILES}"
   DEFINITION
     "."
 )
@@ -740,7 +732,7 @@ set(CPACK_GENERATOR TXZ)
 if(TARGET_OS STREQUAL "windows")
   set(CPACK_GENERATOR ZIP)
 elseif(TARGET_OS STREQUAL "mac")
-  set(CPACK_GENERATOR DMG)
+  set(CPACK_GENERATOR Bundle)
 endif()
 include(CPack)
 
