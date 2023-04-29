@@ -471,6 +471,16 @@ if(NOT(GTEST_FOUND) AND DOWNLOAD_GTEST)
 endif()
 
 ########################################################################
+# COPY DATA AND DLLS
+########################################################################
+
+set(COPY_FILES
+  ${FREETYPE_COPY_FILES}
+  ${SDL2_COPY_FILES}
+)
+file(COPY ${COPY_FILES} DESTINATION .)
+
+########################################################################
 # DEPENDENCY COMPILATION
 ########################################################################
 
@@ -715,13 +725,10 @@ install(
 )
 
 if(TARGET_OS STREQUAL "windows")
-
-  message(STATUS "Library files found: ${FREETYPE_COPY_FILES} ${SDL2_COPY_FILES}")
-
   install(
     FILES  
-      "${PROJECT_BINARY_DIR}/${FREETYPE_COPY_FILES}"
-      "${PROJECT_BINARY_DIR}/${SDL2_COPY_FILES}"
+      "SDL2.dll"
+      "libfreetype.dll"
     DEFINITION
       "."
   )
