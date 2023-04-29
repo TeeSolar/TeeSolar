@@ -722,7 +722,9 @@ if(TARGET_OS STREQUAL "windows")
   )
 
   file(COPY ${LIBRARY_COPY_FILES} DESTINATION .)
-  
+
+  message(STATUS "Library files found: ${LIBRARY_COPY_FILES}")
+
   install(
     FILES  
       ${LIBRARY_COPY_FILES}
