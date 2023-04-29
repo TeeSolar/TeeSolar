@@ -12,7 +12,7 @@ jobs:
         - os: ubuntu-latest
           cmake-args: -G "Unix Makefiles"
           build-args: --parallel
-          package-file: teesolar-*-linux_x86_64.tar.xz
+          package-file: teesolar-*-Linux.tar.xz
           env:
             CFLAGS: -Wdeclaration-after-statement -Werror
             CXXFLAGS: -Werror
