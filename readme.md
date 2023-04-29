@@ -1,5 +1,5 @@
 
-TeeSolar
+TeeSolar ![GitHub Actions](https://github.com/TeeSolar/TeeSolar/workflows/Build/badge.svg)
 =========
 
 A teeworlds map editor
