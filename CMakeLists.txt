@@ -727,8 +727,8 @@ install(
 if(TARGET_OS STREQUAL "windows")
   install(
     FILES
-      "SDL2.dll"
-      "libfreetype.dll"
+      ${FREETYPE_COPY_FILES}
+      ${SDL2_COPY_FILES}
     DESTINATION
       "."
   )
