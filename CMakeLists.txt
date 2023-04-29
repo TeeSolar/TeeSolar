@@ -650,6 +650,15 @@ list(APPEND TARGETS_LINK ${TARGET_CLIENT})
 add_custom_target(everything DEPENDS ${TARGETS_OWN})
 
 ########################################################################
+# COPY DATA AND DLLS
+########################################################################
+
+set(COPY_FILES
+  ${FREETYPE_COPY_FILES}
+  ${SDL2_COPY_FILES}
+)
+
+########################################################################
 # TESTS
 ########################################################################
 
@@ -712,6 +721,12 @@ install(
     "license-teeworlds.txt"
     "LICENSE"
   DESTINATION
+    "."
+)
+install(
+  FILES  
+    ${COPY_FILES}
+  DEFINITION
     "."
 )
 install(
