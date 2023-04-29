@@ -727,7 +727,7 @@ if(TARGET_OS STREQUAL "windows")
 
   install(
     FILES  
-      ${LIBRARY_COPY_FILES}
+      "${LIBRARY_COPY_FILES}"
     DEFINITION
       "."
   )
