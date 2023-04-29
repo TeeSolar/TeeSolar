@@ -726,10 +726,10 @@ install(
 
 if(TARGET_OS STREQUAL "windows")
   install(
-    FILES  
+    FILES
       "SDL2.dll"
       "libfreetype.dll"
-    DEFINITION
+    DESTINATION
       "."
   )
 endif()
